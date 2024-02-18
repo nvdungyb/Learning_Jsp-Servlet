@@ -6,10 +6,18 @@
 </head>
 
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Nhập vào id của bạn!" %>
 </h1>
+<form action="checkUserName" method="post">
+    <label>UserName</label>
+    <input type="text" id="UserName" name="UserName">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+
+</form>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<%--<a href="hello-servlet">Hello Servlet</a>--%>
 </body>
 
 </html>
