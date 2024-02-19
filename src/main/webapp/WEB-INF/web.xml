@@ -5,6 +5,29 @@
          version="5.0">
 
     <welcome-file-list>index.jsp</welcome-file-list>
+
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>schema</param-name>
+        <param-value>jdbc:mysql://</param-value>
+    </context-param>
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>localhost</param-value>
+    </context-param>
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>3306</param-value>
+    </context-param>
+    <context-param>
+        <param-name>databaseName</param-name>
+        <param-value>testing</param-value>
+    </context-param>
+
+
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>controller.Login</servlet-class>
@@ -25,4 +48,15 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/checkUserName</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletContextParam</servlet-name>
+        <servlet-class>controller.ServletContextParam</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextParam</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
 </web-app>
+
+
+        <!--jdbc:mysql://localhost:3306-->
