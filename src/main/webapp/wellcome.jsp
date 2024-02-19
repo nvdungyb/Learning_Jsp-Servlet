@@ -9,15 +9,21 @@
 
 <%
     ServletContext context = request.getServletContext();
-  String userName = (String)context.getAttribute("userName");
-  System.out.println(userName);
+    String userName = (String) context.getAttribute("userName");
+    String adminEmail = (String) context.getAttribute("adminEmail");
+    System.out.println(userName);
 %>
 
 <html>
 <head>
     <title>Xin chào </title>
-    <% if(userName != null) { %>
-        <h1>Xin chào <%= userName %></h1>
+    <% if (userName != null) { %>
+        <h1>Xin chào <%= userName %>
+        </h1>
+        <br>
+        <br>
+        <label>Có thắc mắc xin hãy liên hệ vào email sau: </label>
+        <label><%= adminEmail %></label>
     <% } else { %>
         <h1>Bạn đăng nhập không thành công.</h1>
     <% } %>
@@ -27,3 +33,10 @@
 
 </body>
 </html>
+
+<%--    Sự khác nhau giữa hai thẻ <% %> và <%= %>
+: Dù cả hai thẻ đều cho phép nhúng mã Java vào trong trang JSP,
+nhưng thẻ <% %> chỉ cho phép nhúng mã Java mà không trả về giá trị,
+còn thẻ <%= %> cho phép nhúng mã Java và trả về giá trị của biểu thức đó.
+
+--%>
