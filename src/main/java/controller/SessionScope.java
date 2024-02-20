@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.net.httpserver.HttpsServer;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
