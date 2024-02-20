@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpSession;
 import model.User;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 public class Login extends HttpServlet {
@@ -45,13 +44,19 @@ public class Login extends HttpServlet {
 
             req.getRequestDispatcher("wellcome.jsp").forward(req, res);
 
-        } else if (submitButton != null && submitButton.equals("Register") && user == null) {       // Để đk thì user không tồn tại trong db.
-            if (!userName.isEmpty() && !pass.isEmpty()) {
-                PrintWriter pr = res.getWriter();
-                pr.write("<h1>Register success</h1>");
-            } else {
-                req.getRequestDispatcher("index.jsp").forward(req, res);
+        } else if (submitButton != null && submitButton.equals("Register")) {
+            // Để đk thì user không tồn tại trong db.
+            if (user == null) {
+                if (!userName.isEmpty() && !pass.isEmpty()) {
+                    boolean isInserted = new UserGet().insertUser(new User(userName, pass));        // New user.
+                    if (isInserted) {
+                        System.out.println("User đã được đăng kí");
+                    } else {
+                        System.out.println("User đăng kí không thành công");
+                    }
+                }
             }
+            req.getRequestDispatcher("index.jsp").forward(req, res);
         }
     }
 }
