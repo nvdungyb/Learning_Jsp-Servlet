@@ -17,6 +17,17 @@ public class Database {
         return null;
     }
 
+    public static Connection connection(String driver, String url) {
+        try {
+            Class.forName(driver);
+            Connection connect = DriverManager.getConnection(url, "root", "Dung3032003_135709");
+            return connect;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void closeConnection(Connection connect) {
         try {
             connect.close();

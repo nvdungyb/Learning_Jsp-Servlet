@@ -5,10 +5,19 @@
     <title>JSP - Hello World</title>
 </head>
 
+<%
+    String loginStatus = null;
+    if(request.getSession().getAttribute("isLogined") != null){
+        loginStatus = "Please login again!";
+    }else{
+        loginStatus = "Please login!. Enter complete information!";
+    }
+%>
+
 <body>
 <h1><%= "Nhập vào id của bạn!" %>
 </h1>
-<form action="checkUserName" method="post">
+<form action="checkLogin" method="post">
     <label>UserName</label>
     <input type="text" id="UserName" name="UserName">
     <br>
@@ -17,7 +26,12 @@
     <input type="password" id="Password" name="UserPassword">
     <br>
     <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" name="submit">
+    <input type="submit" value="Register" name="submit">
+    <br>
+    <br>
+    <label><%= loginStatus %></label>
+
 
 </form>
 <br/>

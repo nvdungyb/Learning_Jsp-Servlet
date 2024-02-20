@@ -24,7 +24,7 @@
     </context-param>
     <context-param>
         <param-name>databaseName</param-name>
-        <param-value>testing</param-value>
+        <param-value>btl_web</param-value>
     </context-param>
 
 
@@ -46,7 +46,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
-        <url-pattern>/checkUserName</url-pattern>
+        <url-pattern>/checkLogin</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ServletContextParam</servlet-name>
@@ -55,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>ServletContextParam</servlet-name>
         <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SessionScope</servlet-name>
+        <servlet-class>controller.SessionScope</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionScope</servlet-name>
+        <url-pattern>/session</url-pattern>
     </servlet-mapping>
 </web-app>
 

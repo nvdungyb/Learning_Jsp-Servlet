@@ -1,4 +1,4 @@
-<%--
+        <%@ page import="model.User" %><%--
   Created by IntelliJ IDEA.
   User: acer
   Date: 2/18/2024
@@ -8,25 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    ServletContext context = request.getServletContext();
-    String userName = (String) context.getAttribute("userName");
-    String adminEmail = (String) context.getAttribute("adminEmail");
-    System.out.println(userName);
+    User user = (User) session.getAttribute("user");
+    String userName = null;
+    if (user != null) {
+        userName = user.getUserName();
+    } else {
+        response.sendRedirect("index.jsp");
+    }
 %>
 
 <html>
 <head>
     <title>Xin chào </title>
-    <% if (userName != null) { %>
-        <h1>Xin chào <%= userName %>
-        </h1>
-        <br>
-        <br>
-        <label>Có thắc mắc xin hãy liên hệ vào email sau: </label>
-        <label><%= adminEmail %></label>
-    <% } else { %>
-        <h1>Bạn đăng nhập không thành công.</h1>
-    <% } %>
+    <h1>Bạn <%=userName%> đã đăng nhập thành công</h1>
 
 </head>
 <body>
