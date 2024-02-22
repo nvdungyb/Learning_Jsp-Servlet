@@ -7,7 +7,7 @@ import jakarta.servlet.ServletContextListener;
 
 import java.sql.Connection;
 
-public class ContextListener implements ServletContextListener {
+public class ContextListener implements ServletContextListener{
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("Context is initialized");
 
@@ -18,7 +18,9 @@ public class ContextListener implements ServletContextListener {
 
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("Context is destroyed");
-        Connection connect = (Connection) sce.getServletContext().getAttribute("connect-db-user");
+        Connection connect = (Connection) sce.getServletContext().getAttribute("connect-db-btl_web");
         Database.closeConnection(connect);
     }
 }
+
+
