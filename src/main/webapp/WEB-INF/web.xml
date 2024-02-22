@@ -5,6 +5,10 @@
          version="5.0">
 
     <welcome-file-list>index.jsp</welcome-file-list>
+    
+    <listener>
+        <listener-class>servlet.listener.ContextListener</listener-class>
+    </listener>
 
     <context-param>
         <param-name>driver</param-name>
@@ -64,7 +68,66 @@
         <servlet-name>SessionScope</servlet-name>
         <url-pattern>/session</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Request</servlet-name>
+        <servlet-class>controller.ResponseHeader</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Request</servlet-name>
+        <url-pattern>/response</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BinaryStream</servlet-name>
+        <servlet-class>controller.BinaryStream</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BinaryStream</servlet-name>
+        <url-pattern>/binary</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>forward1</servlet-name>
+        <servlet-class>request.dispatcher.Forward1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>forward1</servlet-name>
+        <url-pattern>/forward1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>forward2</servlet-name>
+        <servlet-class>request.dispatcher.Forward2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>forward2</servlet-name>
+        <url-pattern>/forward2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>include1</servlet-name>
+        <servlet-class>request.dispatcher.Include1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>include1</servlet-name>
+        <url-pattern>/include1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>include2</servlet-name>
+        <servlet-class>request.dispatcher.Include2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>include2</servlet-name>
+        <url-pattern>/include2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>sendRedirect</servlet-name>
+        <servlet-class>response.redirection.SendRedirect</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sendRedirect</servlet-name>
+        <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
 </web-app>
 
 
-        <!--jdbc:mysql://localhost:3306-->
+        <!--jdbc:mysql://localhost:3306/db_name -->

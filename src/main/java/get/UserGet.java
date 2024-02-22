@@ -6,10 +6,10 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class UserGet {
-    public ArrayList<User> getUserList() throws SQLException {
-        Connection connec = controller.Database.connection("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/btl_web");
+    public ArrayList<User> getUserList(Connection connection) throws SQLException {
+        Connection connect = connection;
         String sql = "SELECT * FROM btl_web.user";
-        Statement statement = connec.createStatement();
+        Statement statement = connect.createStatement();
         ResultSet rs = statement.executeQuery(sql);
 
         ArrayList<User> ls = new ArrayList<>();
@@ -18,16 +18,15 @@ public class UserGet {
             String passWord = rs.getString("passWord");
             User user = new User(userName, passWord);
             ls.add(user);
-            connec.close();
         }
 
         return ls;
     }
 
-    public User login(String name, String pass) throws SQLException {
-        Connection connec = controller.Database.connection("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/btl_web");
+    public User login(Connection connection, String name, String pass) throws SQLException {
+        Connection connect = connection;
         String sql = "SELECT * FROM btl_web.user Where userName  = '" + name + "' and passWord = '" + pass + "'";
-        Statement statement = connec.createStatement();
+        Statement statement = connect.createStatement();
         ResultSet rs = statement.executeQuery(sql);
 
         while (rs.next()) {
@@ -36,19 +35,17 @@ public class UserGet {
             User user = new User(userName, passWord);
             return user;
         }
-        connec.close();
 
         return null;
     }
 
-    public boolean insertUser(User user) {
-        Connection connec = controller.Database.connection("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/btl_web");
+    public boolean insertUser(Connection connection, User user) {
+        Connection connec = connection;
         String sql = "INSERT INTO btl_web.user VALUES('" + user.getUserName() + "','" + user.getPassword() + "')";
         System.out.println(sql);
         try {
             Statement statement = connec.createStatement();
             statement.executeUpdate(sql);
-            connec.close();
             return true;
         } catch (SQLException e) {
             return false;
