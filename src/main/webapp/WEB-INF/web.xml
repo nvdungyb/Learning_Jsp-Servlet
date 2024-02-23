@@ -8,6 +8,7 @@
     
     <listener>
         <listener-class>servlet.listener.ContextListener</listener-class>
+        <listener-class>servlet.listener.RequestAttributeListener</listener-class>
     </listener>
 
     <context-param>
@@ -126,6 +127,24 @@
     <servlet-mapping>
         <servlet-name>sendRedirect</servlet-name>
         <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestAttributeListener</servlet-name>
+        <servlet-class>servlet.listener.test.TestServletAttributeListener</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestAttributeListener</servlet-name>
+        <url-pattern>/attribute</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cookieMechanism</servlet-name>
+        <servlet-class>session.tracking.CookieMechanism</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cookieMechanism</servlet-name>
+        <url-pattern>/cookie</url-pattern>
     </servlet-mapping>
 </web-app>
 

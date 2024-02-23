@@ -46,15 +46,16 @@ public class Login extends HttpServlet {
         String submitButton = req.getParameter("submit");
 
         if (submitButton != null && submitButton.equals("Submit")) {
-            req.getSession().setAttribute("user", user);
+            req.getSession(false).setAttribute("user", user);
 
-            HttpSession httpSession = req.getSession();
+            HttpSession httpSession = req.getSession(false);
             if (httpSession.getAttribute("isLogined") == null) {
                 httpSession.setAttribute("isLogined", true);
                 httpSession.setAttribute("admin", true);
             }
 
-            req.getRequestDispatcher("wellcome.jsp").forward(req, res);
+//            req.getRequestDispatcher("wellcome.jsp").forward(req, res);
+            req.getRequestDispatcher("cookie").forward(req, res);
 
         } else if (submitButton != null && submitButton.equals("Register")) {
             // Để đk thì user không tồn tại trong db.
