@@ -4,6 +4,8 @@ import get.UserGet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +16,12 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@WebServlet(
+        urlPatterns = {"/checkLogin"},
+        initParams = {@WebInitParam(name="adminName", value="nvdungyb"),
+                @WebInitParam(name="adminPassword", value="admin"),
+                @WebInitParam(name="adminEmail", value="nguyenvandungk49a1@gmail.com")}
+)
 public class Login extends HttpServlet {
     private String adminName, adminPassword, adminEmail;
     private Connection connection = null;

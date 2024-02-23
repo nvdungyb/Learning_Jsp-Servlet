@@ -1,5 +1,6 @@
 package session.tracking;
 
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebServlet("/read-cookie")
 public class ReadCookie extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         doPost(req, res);

@@ -1,6 +1,7 @@
 package controller;
 
 import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 
+@WebServlet("/binary")
 public class BinaryStream extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse res) throws IOException {
         // Set content type.

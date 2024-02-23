@@ -21,6 +21,8 @@
 <head>
     <title>Xin chào </title>
     <h1>Bạn <%=userName%> đã đăng nhập thành công</h1>
+    <br>
+    <a href="read-cookie">Chuyển hướng tới /read-cookie</a>
 
 </head>
 <body>

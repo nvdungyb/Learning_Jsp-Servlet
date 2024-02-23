@@ -1,6 +1,7 @@
 package session.tracking;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import model.User;
 
 import java.io.IOException;
 
+@WebServlet("/cookie")
 public class CookieMechanism extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
@@ -22,3 +24,5 @@ public class CookieMechanism extends HttpServlet {
         req.getRequestDispatcher("wellcome.jsp").forward(req, res);
     }
 }
+
+
