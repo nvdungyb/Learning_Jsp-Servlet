@@ -2,7 +2,9 @@ package servlet.listener;
 
 import jakarta.servlet.ServletRequestAttributeEvent;
 import jakarta.servlet.ServletRequestAttributeListener;
+import jakarta.servlet.annotation.WebListener;
 
+@WebListener
 public class RequestAttributeListener implements ServletRequestAttributeListener {
 
     public void attributeAdded(ServletRequestAttributeEvent srae) {

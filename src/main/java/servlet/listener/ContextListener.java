@@ -4,9 +4,11 @@ import controller.Database;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 
 import java.sql.Connection;
 
+@WebListener
 public class ContextListener implements ServletContextListener{
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("Context is initialized");
