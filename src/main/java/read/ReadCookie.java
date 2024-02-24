@@ -1,4 +1,4 @@
-package session.tracking;
+package read;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -22,5 +22,7 @@ public class ReadCookie extends HttpServlet {
         for (int i = 0; i < cookies.length; i++) {
             pr.write("<h1> Cookie Name: " + cookies[i].getName() + "  Cookies value: " + cookies[i].getValue() + "</h1><br>");
         }
+
+        pr.write("<a href='/logout'> Logout </a>");
     }
 }

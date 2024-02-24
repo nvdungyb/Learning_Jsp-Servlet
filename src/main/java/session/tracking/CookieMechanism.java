@@ -21,6 +21,8 @@ public class CookieMechanism extends HttpServlet {
             res.addCookie(ckPassword);
         }
 
+        // if we invalidate the session, the all attribute in the session will be removed. => user will be removed.
+//        req.getSession().invalidate();
         req.getRequestDispatcher("wellcome.jsp").forward(req, res);
     }
 }

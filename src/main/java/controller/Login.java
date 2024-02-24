@@ -18,9 +18,9 @@ import java.sql.SQLException;
 
 @WebServlet(
         urlPatterns = {"/checkLogin"},
-        initParams = {@WebInitParam(name="adminName", value="nvdungyb"),
-                @WebInitParam(name="adminPassword", value="admin"),
-                @WebInitParam(name="adminEmail", value="nguyenvandungk49a1@gmail.com")}
+        initParams = {@WebInitParam(name = "adminName", value = "nvdungyb"),
+                @WebInitParam(name = "adminPassword", value = "admin"),
+                @WebInitParam(name = "adminEmail", value = "nguyenvandungk49a1@gmail.com")}
 )
 public class Login extends HttpServlet {
     private String adminName, adminPassword, adminEmail;
@@ -54,9 +54,9 @@ public class Login extends HttpServlet {
         String submitButton = req.getParameter("submit");
 
         if (submitButton != null && submitButton.equals("Submit")) {
-            req.getSession(false).setAttribute("user", user);
+            HttpSession httpSession = req.getSession(true);
+            httpSession.setAttribute("user", user);         // Lưu thông tin user vào session, nếu Session không tồn tại thì tạo mới.
 
-            HttpSession httpSession = req.getSession(false);
             if (httpSession.getAttribute("isLogined") == null) {
                 httpSession.setAttribute("isLogined", true);
                 httpSession.setAttribute("admin", true);
