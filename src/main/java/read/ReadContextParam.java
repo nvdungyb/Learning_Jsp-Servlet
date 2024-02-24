@@ -1,5 +1,6 @@
-package controller;
+package read;
 
+import controller.Database;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -11,10 +12,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.Enumeration;
 
-
-@WebServlet("/test")
-public class ServletContextParam extends HttpServlet {
+@WebServlet("/read-context")
+public class ReadContextParam extends HttpServlet {
     private ServletContext context;
     private String host, databaseName, schema, port, driver;
 
@@ -35,5 +36,11 @@ public class ServletContextParam extends HttpServlet {
 
         PrintWriter pr = res.getWriter();
         pr.write("<h1> " + connect + "</h1>");
+
+        Enumeration<String> params = context.getAttributeNames();
+        while (params.hasMoreElements()) {
+            String param = params.nextElement();
+            pr.write("<h5> " + param + " : " + context.getAttribute(param) + "</h1>");
+        }
     }
 }

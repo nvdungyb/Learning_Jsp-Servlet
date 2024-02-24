@@ -6,11 +6,6 @@
 
     <welcome-file-list>index.jsp</welcome-file-list>
 
-    <listener>
-        <listener-class>servlet.listener.ContextListener</listener-class>
-        <listener-class>servlet.listener.RequestAttributeListener</listener-class>
-    </listener>
-
     <context-param>
         <param-name>driver</param-name>
         <param-value>com.mysql.cj.jdbc.Driver</param-value>

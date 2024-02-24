@@ -17,7 +17,7 @@ public class RequestAttributeListener implements ServletRequestAttributeListener
     }
 
     public void attributeReplaced(ServletRequestAttributeEvent srae) {
-        System.out.println("Replaced attribute " + srae.getName() + " Attribute value " + srae.getValue());
+//        System.out.println("Replaced attribute " + srae.getName() + " Attribute value " + srae.getValue());
     }
 
 }
