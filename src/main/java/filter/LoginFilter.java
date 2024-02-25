@@ -33,7 +33,7 @@ public class LoginFilter implements Filter {
 //            PrintWriter pr = res.getWriter();
 //            pr.write("<h1>This site is under construction</h1>");
 //            pr.close();
-//      We can checking total response time in filter and more...
+//      We can check total response time in filter and more...
         } else {
             filterChain.doFilter(req, res);
         }
