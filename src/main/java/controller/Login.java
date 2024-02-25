@@ -1,8 +1,7 @@
 package controller;
 
-import get.UserGet;
+import dao.UserDao;
 import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,18 +22,10 @@ import java.sql.SQLException;
                 @WebInitParam(name = "adminEmail", value = "nguyenvandungk49a1@gmail.com")}
 )
 public class Login extends HttpServlet {
-    private String adminName, adminPassword, adminEmail;
     private Connection connection = null;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        adminName = config.getInitParameter("adminName");
-        adminPassword = config.getInitParameter("adminPassword");
-        adminEmail = config.getInitParameter("adminEmail");
-
-        // ServletListener.
-        ServletContext context = config.getServletContext();
-        connection = (Connection) context.getAttribute("connect-db-btl_web");
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -46,7 +37,7 @@ public class Login extends HttpServlet {
         String pass = req.getParameter("UserPassword").trim();
         User user = null;
         try {
-            user = new UserGet().login(connection, userName, pass);
+            user = UserDao.login(userName, pass);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -69,7 +60,7 @@ public class Login extends HttpServlet {
             // Để đk thì user không tồn tại trong db.
             if (user == null) {
                 if (!userName.isEmpty() && !pass.isEmpty()) {
-                    boolean isInserted = new UserGet().insertUser(connection, new User(userName, pass));        // New user.
+                    boolean isInserted = UserDao.saveUser(new User(userName, pass));        // New user.
                     if (isInserted) {
                         System.out.println("User đã được đăng kí");
                     } else {
